@@ -1,0 +1,6 @@
+{
+  "name": "CRM DEXTER",
+  "description": "Plataforma Inteligente de Gestión, Procesamiento y Análisis de Datos con arquitectura modular, pipelines de datasets, mapeo semántico, dashboards y exportación de reportes.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
