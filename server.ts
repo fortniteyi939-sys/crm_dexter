@@ -1,15 +1,28 @@
 import express from 'express';
 import path from 'path';
 import dotenv from 'dotenv';
+import cors from 'cors'; // 1. Se agrega la importación de CORS
 import { apiRouter } from './server/routes/api.router.ts';
 import { createServer as createViteServer } from 'vite';
 
 dotenv.config();
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 async function startServer() {
   const app = express();
+
+  // 2. Configuración de CORS para permitir conexiones desde Vercel y local
+  app.use(cors({
+    origin: [
+      'https://crm-dexter-nu.vercel.app', // Tu frontend desplegado en Vercel
+      'http://localhost:5173',            // Frontend en desarrollo local
+      'http://localhost:3000'
+    ],
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true
+  }));
 
   // Middleware for JSON parsing and urlencoded
   app.use(express.json({ limit: '50mb' }));
