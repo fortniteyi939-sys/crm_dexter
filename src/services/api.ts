@@ -17,7 +17,8 @@ import {
   RubroProyecto
 } from '../types/index.ts';
 
-const API_BASE = '/api';
+// ✅ Usa la variable de entorno de Vercel (VITE_API_URL) o cae en fallback a la URL de tu backend
+const API_BASE = (import.meta.env.VITE_API_URL as string) || 'https://tu-backend-en-railway.up.railway.app/api';
 
 class ApiService {
   private token: string | null = null;
